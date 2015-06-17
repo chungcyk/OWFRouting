@@ -18,7 +18,7 @@ read_seabed
 %% Sweep
 display('Generating distance matrix');
 
-capacity = 6;
+capacity = 4;
 no_of_nodes = size(WTG_location,1);
 no_of_turbines = no_of_nodes -1 ;
 
