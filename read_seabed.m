@@ -15,7 +15,7 @@
 % seabed_grid = fscanf(fileID,formatSpec,sizeA);
 % fclose(fileID);
 
-% For 2D testing only
+% For testing only
 addpath('test_data');
 load humps_big.mat
 seabed_grid = flatseabed;
@@ -24,14 +24,6 @@ seaY = seabed_grid(:,2);
 seaZ = seabed_grid(:,3);
 % 
 
-% seaX = seabed_grid(1,:)';
-% seaY = seabed_grid(2,:)';
-% seaZ = seabed_grid(3,:)';
-
-% Tidy Up
-clear fileID;
-clear formatSpec;
-clear sizeA;
 
 % geodesic
     global geodesic_library;                
@@ -44,6 +36,13 @@ clear sizeA;
     vertices(:,3) = seaZ';
     faces = delaunay(seaX',seaY');
 
+% Tidy Up
+clear fileID;
+clear formatSpec;
+clear sizeA;
+clear seabed_grid
+    
+    
 %% Read in turbine location data
 display('Reading turbine location data');
 load test_16.mat
@@ -56,3 +55,5 @@ for WTG = 1:size(WTG_location,1)
     temp = abs(seaX-WTG_location(WTG,1))+abs(seaY-WTG_location(WTG,2));
     [c WTGindex(WTG)] = min(temp);
 end
+
+clear c;

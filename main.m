@@ -18,29 +18,30 @@ read_seabed
 %% Sweep
 display('Generating distance matrix');
 
-capacity = 4;
+capacity = 6;
 no_of_nodes = size(WTG_location,1);
 no_of_turbines = no_of_nodes -1 ;
 
 [dist_matrix , pathCell]= mdist(WTGindex, vertices, faces);
 
-
 % Sweep matrix
 x_pt = [1,1,1,1,1,1,1,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,1,1,1,1,1,1,1,1,1];
 y_pt = [1.01540000000000,1.06420000000000,1.15470000000000,1.30540000000000,1.55570000000000,2,2.92380000000000,5.75880000000000,1,1.01540000000000,1.06420000000000,1.15470000000000,1.30540000000000,1.55570000000000,2,2.92380000000000,5.75880000000000,0,-1.01540000000000,-1.06420000000000,-1.15470000000000,-1.30540000000000,-1.55570000000000,-2,-2.92380000000000,-5.75880000000000,-1,-1.01540000000000,-1.06420000000000,-1.15470000000000,-1.30540000000000,-1.55570000000000,-2,-2.92380000000000,-5.75880000000000,0];
-% route = {};
+
 for vStart = 1:numel(x_pt)
     display(sprintf('Processing Sweep Vector %d', vStart))
     sweep
     clarke
 end
+
+% Removing all temp variables
+postclarketidy
 %%
 
 shortestroute
 
 %%
 % Representation
-% showroute
 
 % Calculating distance
 results= [];

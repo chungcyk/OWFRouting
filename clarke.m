@@ -4,7 +4,6 @@ no_of_routes = 1;
     
 for r = 1:no_of_clusters
 
-%     route_curr = route_clusters{r}+1;
   route_curr = route_clusters{r};  
     if (numel(route_curr) == 1) % If there is only one node in that path
         
@@ -17,29 +16,15 @@ for r = 1:no_of_clusters
 
                 a = route_clusters{r}(1);
         b = route_clusters{r}(2);
-        route{vStart,no_of_routes}(1) = a; % a to be the first node
-        route{vStart,no_of_routes}(2) = b; % a to be the first node
+        route{vStart,no_of_routes}(1) = a; 
+        route{vStart,no_of_routes}(2) = b; 
         route_flag(a) = 1;
         route_flag(b) = 1;
         no_of_routes = no_of_routes+1;
         
-%         a = route_clusters{r}(1);
-%         route{vStart,no_of_routes}(1) = a; % a to be the first node
-%         route_flag(a) = 1;
-%         no_of_routes = no_of_routes+1;
-% 
-%         b = route_clusters{r}(2);
-%         route{vStart,no_of_routes}(1) = b; % a to be the first node
-%         route_flag(b) = 1;
-%         no_of_routes = no_of_routes+1;
     
     else 
     route_curr = [WTGindex(1); route_curr'];
-%     temp_loc =  WTG_location(route_curr,:);
-    
-    % By now all WTG location of route r is in temp_loc
-    
-%     [dist_matrix_curr , ~] = mdist(route_curr, vertices, faces);
     
     for m=1:numel(route_curr)
         route_curr(m) = find(WTGindex == route_curr(m));
